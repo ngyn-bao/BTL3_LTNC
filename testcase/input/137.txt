@@ -1,0 +1,7 @@
+BEGIN
+INSERT x number
+BEGIN
+INSERT x string
+END
+ASSIGN x 1
+END

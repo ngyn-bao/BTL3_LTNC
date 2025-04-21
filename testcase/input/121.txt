@@ -1,0 +1,6 @@
+INSERT x number
+BEGIN
+INSERT x string
+ASSIGN x 'str'
+END
+ASSIGN x 10

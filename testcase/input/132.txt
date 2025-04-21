@@ -1,0 +1,5 @@
+BEGIN
+BEGIN
+INSERT x string
+END
+LOOKUP x

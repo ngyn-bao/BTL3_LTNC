@@ -1,0 +1,11 @@
+INSERT x number
+INSERT y string
+BEGIN
+INSERT x number
+INSERT z number
+BEGIN
+INSERT t number
+INSERT x number
+RPRINT
+END
+END
