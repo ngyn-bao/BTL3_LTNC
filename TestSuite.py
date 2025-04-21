@@ -91,8 +91,8 @@ class TestSymbolTable(unittest.TestCase):
         self.assertTrue(TestUtils.check(input, expected, 101))
 
     def test_2(self):
-        input = ["INSERT x number", "INSERT x string"]
-        expected = ["Redeclared: INSERT x string"]
+        input = ["INSERT x number", "INSERT y number", "ASSIGN x z"]
+        expected = ["Undeclared: ASSIGN x z"]
         self.assertTrue(TestUtils.check(input, expected, 102))
 
     def test_3(self):

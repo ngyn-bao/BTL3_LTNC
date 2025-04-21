@@ -1,1 +1,1 @@
-Redeclared: INSERT x string
+Undeclared: ASSIGN x z

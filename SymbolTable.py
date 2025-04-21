@@ -25,7 +25,7 @@ def get_value_type(value, table_stack, command):
     elif is_valid_identifier_nameifier(value):
         return get_identifier_nameifier_type(command, value, table_stack)
     else:
-        raise Undeclared(command)
+        raise TypeMismatch(command)
 
 def merge(scopes, level):
     if not scopes:
