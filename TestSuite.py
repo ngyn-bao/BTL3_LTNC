@@ -86,13 +86,13 @@ class TestSymbolTable(unittest.TestCase):
     
     #------------------------------------------------------
     def test_1(self):
-        input = ["INSERT x number"]
-        expected = ["success"]
+        input = [" INSERT x number"]
+        expected = ["Invalid:  INSERT x number"]
         self.assertTrue(TestUtils.check(input, expected, 101))
 
     def test_2(self):
-        input = ["INSERT x number", "INSERT y number", "ASSIGN x z"]
-        expected = ["Undeclared: ASSIGN x z"]
+        input = ["INSERT x number", "BEGIN", "INSERT y number", "ASSIGN y z", "END"]
+        expected = ["Undeclared: ASSIGN y z"]
         self.assertTrue(TestUtils.check(input, expected, 102))
 
     def test_3(self):
@@ -101,8 +101,8 @@ class TestSymbolTable(unittest.TestCase):
         self.assertTrue(TestUtils.check(input, expected, 103))
 
     def test_4(self):
-        input = ["INSERT x number", "ASSIGN x 1"]
-        expected = ["success", "success"]
+        input = ["INSERT x number", "ASSIGN x -1"]
+        expected = ["Invalid: ASSIGN x -1"]
         self.assertTrue(TestUtils.check(input, expected, 104))
 
     def test_5(self):
@@ -204,7 +204,7 @@ class TestSymbolTable(unittest.TestCase):
 
     def test_22(self):
         input = ["INSERT x number", "ASSIGN x 'wrong_type'"]
-        expected = ["TypeMismatch: ASSIGN x 'wrong_type'"]
+        expected = ["Invalid: ASSIGN x 'wrong_type'"]
         self.assertTrue(TestUtils.check(input, expected, 122))
 
     def test_23(self):

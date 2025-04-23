@@ -21,11 +21,11 @@ def get_value_type(value, table_stack, command):
         inner = value[1:-1]
         if all(c.isalnum() for c in inner):
             return "string"
-        raise TypeMismatch(command)
+        raise InvalidInstruction(command)
     elif is_valid_identifier_nameifier(value):
         return get_identifier_nameifier_type(command, value, table_stack)
     else:
-        raise TypeMismatch(command)
+        raise InvalidInstruction(command)
 
 def merge(scopes, level):
     if not scopes:
@@ -39,13 +39,17 @@ def merge(scopes, level):
     return filtered_rest + entries
 
 def process_command(cmd, table_stack):
-    tokens = cmd.strip().split()
-    if not tokens:
+    if cmd != " ".join(cmd.strip().split()):
+        raise InvalidInstruction(cmd)
+    
+    tokens = cmd.split()
+    
+    if not tokens and len(tokens) > 3:
         raise InvalidInstruction(cmd)
     cmd_type = tokens[0]
 
     if cmd_type == "INSERT":
-        if len(tokens) != 3:
+        if len(tokens) != 3 or not is_valid_identifier_nameifier(tokens[1]) or tokens[2] not in ["number", "string"]:
             raise InvalidInstruction(cmd)
         identifier_name, type = tokens[1], tokens[2]
         if identifier_name in table_stack[0]:

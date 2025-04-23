@@ -1,3 +1,5 @@
 INSERT x number
+BEGIN
 INSERT y number
-ASSIGN x z
+ASSIGN y z
+END

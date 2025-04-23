@@ -1,2 +1,2 @@
 INSERT x number
-ASSIGN x 1
+ASSIGN x -1

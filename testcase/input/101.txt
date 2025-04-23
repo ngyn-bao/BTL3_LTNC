@@ -1,1 +1,1 @@
-INSERT x number
+ INSERT x number
